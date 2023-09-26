@@ -11,7 +11,7 @@ export async function getArtist(
   }
 ): Promise<Artist> {
   const response = await got.post(
-    'https://music.youtube.com/youtubei/v1/browse?key=AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30',
+    'https://music.youtube.com/youtubei/v1/browse?key=' + process.env.YOUTUBE_API_KEY,
     {
       json: {
         ...context.body,

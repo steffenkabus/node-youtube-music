@@ -25,7 +25,7 @@ export const parseSearchAlbumsBody = (body: any): AlbumPreview[] => {
 
 export async function searchAlbums(query: string): Promise<AlbumPreview[]> {
   const response = await got.post(
-    'https://music.youtube.com/youtubei/v1/search?alt=json&key=AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30',
+    'https://music.youtube.com/youtubei/v1/search?alt=json&key=' + process.env.YOUTUBE_API_KEY,
     {
       json: {
         ...context.body,

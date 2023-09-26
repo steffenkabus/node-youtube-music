@@ -9,7 +9,7 @@
   "types": "dist/index.d.ts",
   "type": "module",
   "node": " >=14.13.1 || >=16.0.0",
-  "repository": "https://github.com/baptisteArno/node-youtube-music",
+  "repository": "https://github.com/steffenkabus/node-youtube-music",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -25,6 +25,7 @@
     "got": "^12.5.3"
   },
   "devDependencies": {
+    "@types/node": "^20.7.0",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",

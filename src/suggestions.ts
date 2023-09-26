@@ -58,7 +58,7 @@ export async function getSuggestions(videoId: string): Promise<MusicVideo[]> {
       },
       searchParams: {
         alt: 'json',
-        key: 'AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30',
+        key: process.env.YOUTUBE_API_KEY,
       },
       headers: {
         'User-Agent':
