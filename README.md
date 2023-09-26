@@ -5,6 +5,8 @@
     Unofficial YouTube Music API for Node.js
 </h2>
 
+Based on the work of [baptisteArno](https://github.com/baptisteArno/node-youtube-music).
+
 <p align="center">
   <a href="https://www.npmjs.com/package/node-youtube-music">
     <img src="https://img.shields.io/npm/v/node-youtube-music.svg" alt="version" />
