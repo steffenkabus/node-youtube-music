@@ -6,8 +6,8 @@
   "files": [
     "dist"
   ],
-  "types": "dist/index.d.ts",
   "type": "module",
+  "types": "dist/index.d.ts",
   "node": " >=14.13.1 || >=16.0.0",
   "repository": "https://github.com/steffenkabus/node-youtube-music",
   "publishConfig": {
@@ -22,10 +22,9 @@
     "generate-change-log": "git fetch --all && pnpx gitmoji-changelog"
   },
   "dependencies": {
-    "got": "^12.5.3"
+    "node-fetch": "^3.3.2"
   },
   "devDependencies": {
-    "@types/node": "^20.7.0",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",

@@ -1,4 +1,4 @@
-import got from 'got';
+import fetch from 'node-fetch';
 import context from './context.js';
 import { MusicVideo } from './models.js';
 import { parseAlbumHeader, parseMusicInAlbumItem } from './parsers.js';
@@ -29,13 +29,14 @@ export const parseListMusicsFromAlbumBody = (body: any): MusicVideo[] => {
 export async function listMusicsFromAlbum(
   albumId: string
 ): Promise<MusicVideo[]> {
-  const response = await got.post(
+  const response = await fetch(
     'https://music.youtube.com/youtubei/v1/browse?alt=json&key=' + process.env.YOUTUBE_API_KEY,
     {
-      json: {
+      method: "POST",
+      body: JSON.stringify({
         ...context.body,
         browseId: albumId,
-      },
+      }),
       headers: {
         'User-Agent':
           'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
@@ -44,7 +45,7 @@ export async function listMusicsFromAlbum(
     }
   );
   try {
-    return parseListMusicsFromAlbumBody(JSON.parse(response.body));
+    return parseListMusicsFromAlbumBody(await response.json());
   } catch (e) {
     console.error(e);
     return [];

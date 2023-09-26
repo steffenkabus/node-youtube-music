@@ -1,4 +1,4 @@
-import got from 'got';
+import fetch from 'node-fetch';
 import context from './context.js';
 import { ArtistPreview } from './models.js';
 import { parseArtistSearchResult } from './parsers.js';
@@ -29,14 +29,15 @@ export async function searchArtists(
     country?: string;
   }
 ): Promise<ArtistPreview[]> {
-  const response = await got.post(
+  const response = await fetch(
     'https://music.youtube.com/youtubei/v1/search?alt=json&key=' + process.env.YOUTUBE_API_KEY,
     {
-      json: {
+      method: "POST",
+      body: JSON.stringify({
         ...context.body,
         params: 'EgWKAQIgAWoKEAMQBBAJEAoQBQ%3D%3D',
         query,
-      },
+      }),
       headers: {
         'User-Agent':
           'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
@@ -46,7 +47,7 @@ export async function searchArtists(
     }
   );
   try {
-    return parseArtistsSearchBody(JSON.parse(response.body));
+    return parseArtistsSearchBody(await response.json());
   } catch (e) {
     console.error(e);
     return [];

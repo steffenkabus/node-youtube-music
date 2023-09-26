@@ -1,4 +1,4 @@
-import got from 'got';
+import fetch from 'node-fetch';
 import context from './context.js';
 import { AlbumPreview } from './models.js';
 import { parseAlbumItem } from './parsers.js';
@@ -24,14 +24,15 @@ export const parseSearchAlbumsBody = (body: any): AlbumPreview[] => {
 };
 
 export async function searchAlbums(query: string): Promise<AlbumPreview[]> {
-  const response = await got.post(
+  const response = await fetch(
     'https://music.youtube.com/youtubei/v1/search?alt=json&key=' + process.env.YOUTUBE_API_KEY,
     {
-      json: {
+      method: "POST",
+      body: JSON.stringify({
         ...context.body,
         params: 'EgWKAQIYAWoKEAkQAxAEEAUQCg%3D%3D',
         query,
-      },
+      }),
       headers: {
         'User-Agent':
           'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
@@ -40,7 +41,7 @@ export async function searchAlbums(query: string): Promise<AlbumPreview[]> {
     }
   );
   try {
-    return parseSearchAlbumsBody(JSON.parse(response.body));
+    return parseSearchAlbumsBody(await response.json());
   } catch (e) {
     console.error(e);
     return [];
