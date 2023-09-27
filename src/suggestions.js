@@ -1,8 +1,8 @@
-import fetch from 'node-fetch';
-import { parseSuggestionItem } from './parsers.js';
-import context from './context.js';
+const fetch = require('node-fetch');
+const parseSuggestionItem = require('./parsers.js');
+const context = require('./context.js');
 
-export const parseGetSuggestionsBody = (body) => {
+module.exports.parseGetSuggestionsBody = (body) => {
   const { contents } =
     body.contents.singleColumnMusicWatchNextResultsRenderer.tabbedRenderer
       .watchNextTabbedResultsRenderer.tabs[0].tabRenderer.content
@@ -23,7 +23,7 @@ export const parseGetSuggestionsBody = (body) => {
   return results;
 };
 
-export async function getSuggestions(videoId) {
+module.exports.getSuggestions = async (videoId) => {
   const response = await fetch(
     'https://music.youtube.com/youtubei/v1/next?alt=json&key=' + process.env.YOUTUBE_API_KEY,
     {

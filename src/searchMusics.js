@@ -1,8 +1,8 @@
-import fetch from 'node-fetch';
-import { parseMusicItem } from './parsers.js';
-import context from './context.js';
+const fetch = require('node-fetch');
+const parseMusicItem = require('./parsers.js');
+const context = require('./context.js');
 
-export const parseSearchMusicsBody = (body) => {
+module.exports.parseSearchMusicsBody = (body) => {
   const { contents } =
     body.contents.tabbedSearchResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents.pop()
       .musicShelfRenderer;
@@ -22,7 +22,7 @@ export const parseSearchMusicsBody = (body) => {
   return results;
 };
 
-export async function searchMusics(query) {
+module.exports.searchMusics = async (query) => {
   const response = await fetch(
     'https://music.youtube.com/youtubei/v1/search?alt=json&key=' + process.env.YOUTUBE_API_KEY,
     {

@@ -1,8 +1,8 @@
-import fetch from 'node-fetch';
-import context from './context.js';
-import { parseAlbumHeader, parseMusicInAlbumItem } from './parsers.js';
+const fetch = require('node-fetch');
+const parseMusicInAlbumItem = require('./parsers.js');
+const context = require('./context.js');
 
-export const parseListMusicsFromAlbumBody = (body) => {
+module.exports.parseListMusicsFromAlbumBody = (body) => {
   const { contents } =
     body.contents.singleColumnBrowseResultsRenderer.tabs[0].tabRenderer.content
       .sectionListRenderer.contents[0].musicShelfRenderer;
@@ -25,9 +25,9 @@ export const parseListMusicsFromAlbumBody = (body) => {
   return songs;
 };
 
-export async function listMusicsFromAlbum(
+module.exports.listMusicsFromAlbum = async (
   albumId
-) {
+) => {
   const response = await fetch(
     'https://music.youtube.com/youtubei/v1/browse?alt=json&key=' + process.env.YOUTUBE_API_KEY,
     {

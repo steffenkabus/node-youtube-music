@@ -1,11 +1,11 @@
-import fetch from 'node-fetch';
-import context from './context.js';
-import { parseArtistData } from './parsers.js';
+const fetch = require('node-fetch');
+const parseArtistData = require('./parsers.js');
+const context = require('./context.js');
 
-export async function getArtist(
+module.exports.getArtist = async (
   artistId,
   options
-) {
+) => {
   const response = await fetch(
     'https://music.youtube.com/youtubei/v1/browse?key=' + process.env.YOUTUBE_API_KEY,
     {

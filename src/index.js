@@ -1,10 +1,10 @@
-export { searchMusics } from './searchMusics.js';
-export { searchAlbums } from './searchAlbums.js';
-export { searchPlaylists } from './searchPlaylists.js';
-export { getSuggestions } from './suggestions.js';
+module.exports.searchMusics = require('./searchMusics.js');
+module.exports.searchAlbums = require('./searchAlbums.js');
+module.exports.searchPlaylists = require('./searchPlaylists.js');
+module.exports.suggestions = require('./suggestions.js');
 
-export { listMusicsFromAlbum } from './listMusicsFromAlbum.js';
-export { listMusicsFromPlaylist } from './listMusicsFromPlaylist.js';
+module.exports.listMusicsFromAlbum = require('./listMusicsFromAlbum.js');
+module.exports.listMusicsFromPlaylist = require('./listMusicsFromPlaylist.js');
 
-export { searchArtists } from './searchArtists.js';
-export { getArtist } from './getArtist.js';
+module.exports.searchArtists = require('./searchArtists.js');
+module.exports.getArtist = require('./getArtist.js');

@@ -1,8 +1,8 @@
-import fetch from 'node-fetch';
-import context from './context.js';
-import { parseMusicInPlaylistItem } from './parsers.js';
+const fetch = require('node-fetch');
+const parseMusicItem = require('./parsers.js');
+const context = require('./context.js');
 
-export const parseListMusicsFromPlaylistBody = (body) => {
+module.exports.parseListMusicsFromPlaylistBody = (body) => {
   const content =
     body.contents.singleColumnBrowseResultsRenderer.tabs[0].tabRenderer.content
       .sectionListRenderer.contents[0];
@@ -24,9 +24,9 @@ export const parseListMusicsFromPlaylistBody = (body) => {
   return results;
 };
 
-export async function listMusicsFromPlaylist(
+module.exports.listMusicsFromPlaylist = async (
   playlistId
-) {
+) => {
   let browseId;
 
   if (!playlistId.startsWith('VL')) {

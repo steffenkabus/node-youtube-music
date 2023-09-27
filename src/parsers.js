@@ -20,7 +20,7 @@ const getAlbumType = (typeText) => {
   }
 };
 // Detects multiple artists of the MusicVideo
-export const listArtists = (data) => {
+module.exports.listArtists = (data) => {
   const artists = [];
   data.forEach((item) => {
     if (
@@ -46,7 +46,7 @@ export const listArtists = (data) => {
   return artists;
 };
 
-export const parseMusicItem = (content) => {
+module.exports.parseMusicItem = (content) => {
   let youtubeId;
   try {
     youtubeId =
@@ -122,7 +122,7 @@ export const parseMusicItem = (content) => {
   };
 };
 
-export const parseSuggestionItem = (content) => {
+module.exports.parseSuggestionItem = (content) => {
   let youtubeId;
   try {
     youtubeId =
@@ -182,7 +182,7 @@ export const parseSuggestionItem = (content) => {
   };
 };
 
-export const parsePlaylistItem = (
+module.exports.parsePlaylistItem = (
   content,
   onlyOfficialPlaylists
 ) => {
@@ -233,7 +233,7 @@ export const parsePlaylistItem = (
   };
 };
 
-export const parseMusicInPlaylistItem = (content) => {
+module.exports.parseMusicInPlaylistItem = (content) => {
   let youtubeId;
   try {
     youtubeId =
@@ -303,7 +303,7 @@ export const parseMusicInPlaylistItem = (content) => {
   };
 };
 
-export const parseAlbumItem = (content) => {
+module.exports.parseAlbumItem = (content) => {
   let albumId;
   try {
     albumId =
@@ -389,7 +389,7 @@ export const parseAlbumItem = (content) => {
   };
 };
 
-export const parseAlbumHeader = (content) => {
+module.exports.parseAlbumHeader = (content) => {
   let artist;
   try {
     artist = content.musicDetailHeaderRenderer.subtitle.runs[2].text;
@@ -417,7 +417,7 @@ export const parseAlbumHeader = (content) => {
   };
 };
 
-export const parseMusicInAlbumItem = (content) => {
+module.exports.parseMusicInAlbumItem = (content) => {
   let youtubeId;
   try {
     youtubeId =
@@ -483,7 +483,7 @@ export const parseMusicInAlbumItem = (content) => {
   };
 };
 
-export const parseArtistsAlbumItem = (item) => {
+module.exports.parseArtistsAlbumItem = (item) => {
   let title;
   try {
     title = item.musicTwoRowItemRenderer.title.runs[0].text;
@@ -583,7 +583,7 @@ const parseArtistsSuggestionsItem = (item) => {
   };
 };
 
-export const parseArtistData = (
+module.exports.parseArtistData = (
   body,
   artistId
 ) => {
@@ -693,7 +693,7 @@ export const parseArtistData = (
   };
 };
 
-export const parseArtistSearchResult = (content) => {
+module.exports.parseArtistSearchResult = (content) => {
   let name;
   try {
     name =
