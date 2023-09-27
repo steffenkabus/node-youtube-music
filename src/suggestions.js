@@ -1,5 +1,4 @@
 import fetch from 'node-fetch';
-import { MusicVideo } from './models.js';
 import { parseSuggestionItem } from './parsers.js';
 import context from './context.js';
 

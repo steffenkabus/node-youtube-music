@@ -1,6 +1,5 @@
 import fetch from 'node-fetch';
 import context from './context.js';
-import { PlaylistPreview } from './models.js';
 import { parsePlaylistItem } from './parsers.js';
 
 export const parseSearchPlaylistsBody = (
