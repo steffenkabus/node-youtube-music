@@ -1,15 +1,11 @@
 import fetch from 'node-fetch';
 import context from './context.js';
-import { Artist } from './models.js';
 import { parseArtistData } from './parsers.js';
 
 export async function getArtist(
-  artistId: string,
-  options?: {
-    lang: string;
-    country: string;
-  }
-): Promise<Artist> {
+  artistId,
+  options
+) {
   const response = await fetch(
     'https://music.youtube.com/youtubei/v1/browse?key=' + process.env.YOUTUBE_API_KEY,
     {
@@ -32,7 +28,7 @@ export async function getArtist(
       throw new Error('No data returned from YouTube Music API');
     }
     
-    return parseArtistData(JsonData as any, artistId);
+    return parseArtistData(JsonData, artistId);
   } catch (e) {
     console.error(e);
     return {};

@@ -1,16 +1,15 @@
 import fetch from 'node-fetch';
 import context from './context.js';
-import { AlbumPreview } from './models.js';
 import { parseAlbumItem } from './parsers.js';
 
-export const parseSearchAlbumsBody = (body: any): AlbumPreview[] => {
+export const parseSearchAlbumsBody = (body) => {
   const { contents } =
     body.contents.tabbedSearchResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents.pop()
       .musicShelfRenderer;
 
-  const results: AlbumPreview[] = [];
+  const results = [];
 
-  contents.forEach((content: any) => {
+  contents.forEach((content) => {
     try {
       const album = parseAlbumItem(content);
       if (album) {
@@ -23,7 +22,7 @@ export const parseSearchAlbumsBody = (body: any): AlbumPreview[] => {
   return results;
 };
 
-export async function searchAlbums(query: string): Promise<AlbumPreview[]> {
+export async function searchAlbums(query) {
   const response = await fetch(
     'https://music.youtube.com/youtubei/v1/search?alt=json&key=' + process.env.YOUTUBE_API_KEY,
     {

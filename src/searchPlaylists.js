@@ -4,9 +4,9 @@ import { PlaylistPreview } from './models.js';
 import { parsePlaylistItem } from './parsers.js';
 
 export const parseSearchPlaylistsBody = (
-  body: any,
-  onlyOfficialPlaylists: boolean
-): PlaylistPreview[] => {
+  body,
+  onlyOfficialPlaylists
+) => {
   const contents =
     body.contents.tabbedSearchResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents.pop()
       .musicShelfRenderer?.contents;
@@ -16,9 +16,9 @@ export const parseSearchPlaylistsBody = (
   }
 
 
-  const results: PlaylistPreview[] = [];
+  const results = [];
 
-  contents.forEach((content: any) => {
+  contents.forEach((content) => {
     try {
       const playlist = parsePlaylistItem(content, onlyOfficialPlaylists);
       if (playlist) {
@@ -32,11 +32,9 @@ export const parseSearchPlaylistsBody = (
 };
 
 export async function searchPlaylists(
-  query: string,
-  options?: {
-    onlyOfficialPlaylists?: boolean;
-  }
-): Promise<PlaylistPreview[]> {
+  query,
+  options
+) {
   const response = await fetch(
     'https://music.youtube.com/youtubei/v1/search?alt=json&key=' + process.env.YOUTUBE_API_KEY,
     {

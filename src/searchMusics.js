@@ -3,16 +3,14 @@ import { MusicVideo } from './models.js';
 import { parseMusicItem } from './parsers.js';
 import context from './context.js';
 
-export const parseSearchMusicsBody = (body: {
-  contents: any;
-}): MusicVideo[] => {
+export const parseSearchMusicsBody = (body) => {
   const { contents } =
     body.contents.tabbedSearchResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents.pop()
       .musicShelfRenderer;
 
-  const results: MusicVideo[] = [];
+  const results = [];
 
-  contents.forEach((content: any) => {
+  contents.forEach((content) => {
     try {
       const song = parseMusicItem(content);
       if (song) {
@@ -25,7 +23,7 @@ export const parseSearchMusicsBody = (body: {
   return results;
 };
 
-export async function searchMusics(query: string): Promise<MusicVideo[]> {
+export async function searchMusics(query) {
   const response = await fetch(
     'https://music.youtube.com/youtubei/v1/search?alt=json&key=' + process.env.YOUTUBE_API_KEY,
     {
@@ -43,7 +41,7 @@ export async function searchMusics(query: string): Promise<MusicVideo[]> {
     }
   );
   try {
-    return parseSearchMusicsBody(await response.json() as any);
+    return parseSearchMusicsBody(await response.json());
   } catch {
     return [];
   }
