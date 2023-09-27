@@ -2,12 +2,8 @@
   "name": "node-youtube-music",
   "description": "Unofficial YouTube Music API for Node.js",
   "version": "0.11.0",
-  "exports": "./dist/index.js",
-  "files": [
-    "dist"
-  ],
+  "main": "src/index.js",  
   "type": "module",
-  "types": "dist/index.d.ts",
   "node": " >=14.13.1 || >=16.0.0",
   "repository": "https://github.com/steffenkabus/node-youtube-music",
   "publishConfig": {
@@ -16,10 +12,7 @@
   "author": "Baptiste Arnaud <contact@baptiste-arnaud.fr>",
   "license": "MIT",
   "scripts": {
-    "dev": "tsup --watch",
-    "build": "tsup",
-    "test": "vitest",
-    "generate-change-log": "git fetch --all && pnpx gitmoji-changelog"
+    "test": "vitest"
   },
   "dependencies": {
     "node-fetch": "^3.3.2"
