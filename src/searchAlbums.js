@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const parseAlbumItem = require('./parsers.js');
+const parsers = require('./parsers.js');
 const context = require('./context.js');
 
 module.exports.parseSearchAlbumsBody = (body) => {
@@ -11,7 +11,7 @@ module.exports.parseSearchAlbumsBody = (body) => {
 
   contents.forEach((content) => {
     try {
-      const album = parseAlbumItem(content);
+      const album = parsers.parseAlbumItem(content);
       if (album) {
         results.push(album);
       }

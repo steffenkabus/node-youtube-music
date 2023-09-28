@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const parseArtistSearchResult = require('./parsers.js');
+const parsers = require('./parsers.js');
 const context = require('./context.js');
 
 module.exports.parseArtistsSearchBody = (body) => {
@@ -10,7 +10,7 @@ module.exports.parseArtistsSearchBody = (body) => {
 
   contents.forEach((content) => {
     try {
-      const artist = parseArtistSearchResult(content);
+      const artist = parsers.parseArtistSearchResult(content);
       if (artist) {
         results.push(artist);
       }

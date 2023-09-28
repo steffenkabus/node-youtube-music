@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const parseMusicInAlbumItem = require('./parsers.js');
+const parsers = require('./parsers.js');
 const context = require('./context.js');
 
 module.exports.parseListMusicsFromAlbumBody = (body) => {
@@ -11,7 +11,7 @@ module.exports.parseListMusicsFromAlbumBody = (body) => {
 
   contents.forEach((element) => {
     try {
-      const song = parseMusicInAlbumItem(element);
+      const song = parsers.parseMusicInAlbumItem(element);
       if (song) {
         song.album = album;
         if (song.artists?.length === 0) song.artists = [{ name: artist }];

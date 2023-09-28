@@ -1,7 +1,7 @@
 {
   "name": "@steffenkabus/node-youtube-music",
   "description": "Unofficial YouTube Music API for Node.js",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "main": "src/index.js",
   "type": "commonjs",
   "node": " >=14.13.1 || >=16.0.0",

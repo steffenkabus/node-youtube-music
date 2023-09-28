@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const parseMusicItem = require('./parsers.js');
+const parsers = require('./parsers.js');
 const context = require('./context.js');
 
 module.exports.parseListMusicsFromPlaylistBody = (body) => {
@@ -13,7 +13,7 @@ module.exports.parseListMusicsFromPlaylistBody = (body) => {
 
   contents.forEach((content) => {
     try {
-      const song = parseMusicInPlaylistItem(content);
+      const song = parsers.parseMusicInPlaylistItem(content);
       if (song) {
         results.push(song);
       }

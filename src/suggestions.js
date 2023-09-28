@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const parseSuggestionItem = require('./parsers.js');
+const parsers = require('./parsers.js');
 const context = require('./context.js');
 
 module.exports.parseGetSuggestionsBody = (body) => {
@@ -12,7 +12,7 @@ module.exports.parseGetSuggestionsBody = (body) => {
 
   contents.forEach((content) => {
     try {
-      const video = parseSuggestionItem(content);
+      const video = parsers.parseSuggestionItem(content);
       if (video) {
         results.push(video);
       }
