@@ -1,11 +1,14 @@
 {
-  "name": "node-youtube-music",
+  "name": "@steffenkabus/node-youtube-music",
   "description": "Unofficial YouTube Music API for Node.js",
   "version": "0.11.0",
   "main": "src/index.js",
   "type": "commonjs",
   "node": " >=14.13.1 || >=16.0.0",
-  "repository": "https://github.com/steffenkabus/node-youtube-music",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steffenkabus/node-youtube-music.git"
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -25,5 +28,9 @@
     "typescript": "^4.9.5",
     "vitest": "^0.28.4"
   },
-  "packageManager": "pnpm@7.21.0"
+  "packageManager": "pnpm@7.21.0",
+  "bugs": {
+    "url": "https://github.com/steffenkabus/node-youtube-music/issues"
+  },
+  "homepage": "https://github.com/steffenkabus/node-youtube-music#readme"
 }
